@@ -1,0 +1,22 @@
+#parameters:
+#    birrols_o_auth.example.class: Birrols\OAuthBundle\Example
+
+#services:
+#    birrols_o_auth.example:
+#        class: %birrols_o_auth.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+parameters:
+    hwi_oauth.user.provider.fosub_bridge.def:      Birrols\OAuthBundle\Security\Core\User\FOSUBUserProvider
+    hwi_oauth.user.policy:  auto
+    hwi_oauth.fosub.properties:
+      - google: googleId
+
+services:
+    hwi_oauth.user.provider.fosub_bridge:
+        class:        "%hwi_oauth.user.provider.fosub_bridge.def%"
+        arguments:    ['@fos_user.user_manager', %hwi_oauth.fosub.properties%, '@service_container', %hwi_oauth.user.policy%]
+#        arguments:    [%hwi_oauth.user.policy%, @fos_user.user_manager, @hwi_oauth.registration.form.handler]
+#          - @fos_user.user_manager
+#          - @hwi_oauth.registration.form.handler
+        # http://symfony.com/doc/current/cookbook/service_container/scopes.html#using-a-service-from-a-narrower-scope
+        # scope:        request

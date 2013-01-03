@@ -1,0 +1,21 @@
+BeersAvatars:
+    type: entity
+    table: beers_avatars
+    fields:
+        avatarId:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: avatar_id
+            generator:
+                strategy: IDENTITY
+        avatarModified:
+            type: datetime
+            nullable: false
+            column: avatar_modified
+        avatarImage:
+            type: blob
+            nullable: false
+            column: avatar_image
+    lifecycleCallbacks: {  }

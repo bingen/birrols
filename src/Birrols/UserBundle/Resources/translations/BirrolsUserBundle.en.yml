@@ -1,0 +1,11 @@
+# Profile
+profile:
+    show:
+        name: Name
+        lastname: Last Name
+        birthday: Birthday
+        sex: Gender
+        country: Country
+        language: Language
+        url: Url
+        image: Avatar

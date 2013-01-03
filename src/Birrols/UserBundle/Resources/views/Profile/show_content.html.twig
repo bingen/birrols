@@ -1,0 +1,26 @@
+{% trans_default_domain "BirrolsUserBundle" %}
+<div>
+    {% if user.imagePath %}
+        <img src="{{ asset( user.getWebPath() | imagine_filter('large') ) }}" />
+    {% else %}
+    {# TODO: default image #}
+        <img src="{{ asset( 'uploads/avatars/users/generic.png' | imagine_filter('large') ) }}" />
+    {% endif %}
+</div>
+<dl class="fos_user_user_show">
+    <dt>{{ 'profile.show.username'|trans({}, 'FOSUserBundle') }}: </dt>
+    <dd>{{ user.username }}</dd>
+    <dt>{{ 'profile.show.email'|trans({}, 'FOSUserBundle') }}: </dt>
+    <dd>{{ user.email }}</dd>
+    <dt>{{ 'profile.show.name'|trans }}: </dt>
+    <dd>{{ user.name }}</dd>
+    <dt>{{ 'profile.show.lastname'|trans }}: </dt>
+    <dd>{{ user.lastname }}</dd>
+    <dt>{{ 'profile.show.birthday'|trans }}: </dt>
+{# TODO: date locale https://github.com/michelsalib/BCCExtraToolsBundle #}
+    <dd>{{ user.birthday | date("m/d/Y") }}</dd>
+    <dt>{{ 'profile.show.sex'|trans }}: </dt>
+    <dd>{{ user.sex }}</dd>
+    <dt>{{ 'profile.show.country'|trans }}: </dt>
+    <dd>{{ user.country }}</dd>
+</dl>

@@ -1,0 +1,77 @@
+Beers:
+    type: entity
+    table: beers
+    fields:
+        autoId:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: auto_id
+            generator:
+                strategy: IDENTITY
+        name:
+            type: string
+            length: 128
+            fixed: true
+            nullable: false
+        breweryId:
+            type: integer
+            unsigned: false
+            nullable: true
+            column: brewery_id
+        categoryId:
+            type: integer
+            unsigned: false
+            nullable: true
+            column: category_id
+        typeId:
+            type: integer
+            unsigned: false
+            nullable: true
+            column: type_id
+        abv:
+            type: decimal
+            nullable: true
+        ibu:
+            type: integer
+            unsigned: false
+            nullable: true
+        og:
+            type: integer
+            unsigned: false
+            nullable: true
+        srm:
+            type: integer
+            unsigned: false
+            nullable: true
+        ebc:
+            type: integer
+            unsigned: false
+            nullable: true
+        malts:
+            type: string
+            length: 128
+            fixed: true
+            nullable: true
+        hops:
+            type: string
+            length: 128
+            fixed: true
+            nullable: true
+        description:
+            type: text
+            nullable: true
+        avatar:
+            type: integer
+            unsigned: true
+            nullable: false
+        score:
+            type: decimal
+            nullable: true
+        registerId:
+            type: integer
+            unsigned: false
+            nullable: true
+            column: register_id
+    lifecycleCallbacks: {  }

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>profile.show.name</source>
+                <target>Nombre</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>profile.show.lastname</source>
+                <target>Apellidos</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>profile.show.sex</source>
+                <target>Sexo</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>profile.show.birthday</source>
+                <target>Fecha de nacimiento</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>profile.show.country</source>
+                <target>País</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>profile.show.language</source>
+                <target>Idioma</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>profile.show.url</source>
+                <target>Url</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

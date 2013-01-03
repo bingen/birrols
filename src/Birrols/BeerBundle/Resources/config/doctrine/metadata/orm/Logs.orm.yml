@@ -1,0 +1,39 @@
+Logs:
+    type: entity
+    table: logs
+    fields:
+        logId:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: log_id
+            generator:
+                strategy: IDENTITY
+        logDate:
+            type: datetime
+            nullable: false
+            column: log_date
+        logType:
+            type: string
+            length: 20
+            fixed: true
+            nullable: false
+            column: log_type
+        logRefId:
+            type: integer
+            unsigned: true
+            nullable: false
+            column: log_ref_id
+        logUserId:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: log_user_id
+        logIp:
+            type: string
+            length: 24
+            fixed: true
+            nullable: true
+            column: log_ip
+    lifecycleCallbacks: {  }

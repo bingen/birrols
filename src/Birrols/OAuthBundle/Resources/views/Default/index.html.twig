@@ -1,0 +1,13 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    {% block hwi_oauth_content %}
+        <p>*********** Prueba: {{ donde }} *******************</p>
+        {% if error %}
+            <div>{{ error }}</div>
+            {# <div>{{ error_instance }}</div> #}
+        {% endif %}
+        <div>connect: {{ connect }}</div>
+        <div>hasUser: {{ hasUser }}</div>
+    {% endblock hwi_oauth_content %}
+{% endblock %}

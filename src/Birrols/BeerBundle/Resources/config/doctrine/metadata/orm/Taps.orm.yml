@@ -1,0 +1,39 @@
+Taps:
+    type: entity
+    table: taps
+    fields:
+        autoId:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: auto_id
+            generator:
+                strategy: IDENTITY
+        businessId:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: business_id
+        tapId:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: tap_id
+        beerId:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: beer_id
+        actual:
+            type: boolean
+            nullable: true
+        registerId:
+            type: integer
+            unsigned: false
+            nullable: true
+            column: register_id
+        modified:
+            type: datetime
+            nullable: false
+    lifecycleCallbacks: {  }

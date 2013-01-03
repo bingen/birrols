@@ -1,0 +1,143 @@
+Business:
+    type: entity
+    table: business
+    fields:
+        autoId:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: auto_id
+            generator:
+                strategy: IDENTITY
+        brewery:
+            type: boolean
+            nullable: false
+        pub:
+            type: boolean
+            nullable: false
+        store:
+            type: boolean
+            nullable: false
+        homebrewStore:
+            type: boolean
+            nullable: false
+            column: homebrew_store
+        food:
+            type: boolean
+            nullable: false
+        wifi:
+            type: boolean
+            nullable: false
+        name:
+            type: string
+            length: 60
+            fixed: true
+            nullable: false
+        avatar:
+            type: integer
+            unsigned: true
+            nullable: false
+        description:
+            type: text
+            nullable: false
+        taps:
+            type: integer
+            unsigned: false
+            nullable: true
+        score:
+            type: decimal
+            nullable: true
+        address1:
+            type: string
+            length: 128
+            fixed: true
+            nullable: true
+            column: address_1
+        address2:
+            type: string
+            length: 128
+            fixed: true
+            nullable: true
+            column: address_2
+        zipCode:
+            type: string
+            length: 10
+            fixed: true
+            nullable: true
+            column: zip_code
+        countryId:
+            type: integer
+            unsigned: false
+            nullable: true
+            column: country_id
+        state:
+            type: string
+            length: 50
+            fixed: true
+            nullable: true
+        city:
+            type: string
+            length: 50
+            fixed: true
+            nullable: true
+        url:
+            type: string
+            length: 128
+            fixed: true
+            nullable: false
+        facebookUrl:
+            type: string
+            length: 128
+            fixed: true
+            nullable: false
+            column: facebook_url
+        twitterUrl:
+            type: string
+            length: 128
+            fixed: true
+            nullable: false
+            column: twitter_url
+        gplusUrl:
+            type: string
+            length: 128
+            fixed: true
+            nullable: false
+            column: gplus_url
+        4squareUrl:
+            type: string
+            length: 128
+            fixed: true
+            nullable: false
+            column: 4square_url
+        email:
+            type: string
+            length: 64
+            fixed: true
+            nullable: false
+        phone:
+            type: string
+            length: 16
+            fixed: true
+            nullable: true
+        lat:
+            type: string
+            length: 10
+            fixed: true
+            nullable: true
+        lon:
+            type: string
+            length: 10
+            fixed: true
+            nullable: true
+        userAdminId:
+            type: integer
+            unsigned: false
+            nullable: true
+            column: user_admin_id
+        registerId:
+            type: integer
+            unsigned: false
+            nullable: true
+            column: register_id
+    lifecycleCallbacks: {  }

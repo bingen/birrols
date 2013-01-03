@@ -1,0 +1,76 @@
+index:
+    pattern:   /{_locale}/index
+    defaults:  { _controller: BirrolsBeerBundle:Main:index, _locale: %fallback_locale% }
+    requirements:
+        _locale: ^(ca|en|es|undefined)(_[^/]*)?
+    
+welcome:
+    pattern:   /{_locale}/
+    defaults:  { _controller: BirrolsBeerBundle:Main:index }
+    requirements:
+        _locale: ^(ca|en|es|undefined)(_[^/]*)?
+welcome_wol:
+    pattern:   /{_locale}
+    defaults:  { _controller: BirrolsBeerBundle:Main:index, _locale: %fallback_locale% }
+    requirements:
+        _locale: ^(ca|en|es|undefined)(_[^/]*)?
+    
+birrols_user:
+    resource: "@BirrolsUserBundle/Resources/config/routing.yml"
+    prefix:   /{_locale}/
+    requirements:
+        _locale: ^(ca|en|es|undefined)(_[^/]*)?
+
+birrols_o_auth:
+    resource: "@BirrolsOAuthBundle/Resources/config/routing.yml"
+    prefix:   /
+#    prefix:   /{_locale}/
+
+_imagine:
+    resource: .
+    type:     imagine
+    
+beer:
+    pattern:      /{_locale}/beer/{id}
+    defaults:     { _controller: BirrolsBeerBundle:Beer:show }
+    requirements:
+        _method:  GET
+        _locale: ^(ca|en|es|undefined)(_[^/]*)?
+    
+beers:
+    pattern:      /{_locale}/beers/{page}
+    defaults:     { _controller: BirrolsBeerBundle:List:index, page: 1 }
+    requirements:
+        _locale: ^(ca|en|es|undefined)(_[^/]*)?
+
+business:
+    pattern:      /{_locale}/business/{id}
+    defaults:     { _controller: BirrolsBeerBundle:Business:show }
+    requirements:
+        _method:  GET
+        _locale: ^(ca|en|es|undefined)(_[^/]*)?
+    
+businesses:
+    pattern:      /{_locale}/businesess/{page}
+    defaults:     { _controller: BirrolsBeerBundle:List:index, page: 1 }
+    requirements:
+        _locale: ^(ca|en|es|undefined)(_[^/]*)?
+
+contact:
+    pattern:   /{_locale}/contact
+    defaults:  { _controller: BirrolsBeerBundle:Main:index }
+    requirements:
+        _locale: ^(ca|en|es|undefined)(_[^/]*)?
+    
+about:
+    pattern:   /{_locale}/about
+    defaults:  { _controller: BirrolsBeerBundle:Main:index }
+    requirements:
+        _locale: ^(ca|en|es|undefined)(_[^/]*)?
+    
+legal:
+    pattern:   /{_locale}/legal
+    defaults:  { _controller: BirrolsBeerBundle:Main:index }
+    requirements:
+        _locale: ^(ca|en|es|undefined)(_[^/]*)?
+

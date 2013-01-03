@@ -1,0 +1,3 @@
+birrols_beer_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: BirrolsBeerBundle:Default:index }

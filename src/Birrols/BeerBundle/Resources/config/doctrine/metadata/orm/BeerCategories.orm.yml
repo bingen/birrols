@@ -1,0 +1,18 @@
+BeerCategories:
+    type: entity
+    table: beer_categories
+    fields:
+        autoId:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: auto_id
+            generator:
+                strategy: IDENTITY
+        category:
+            type: string
+            length: 10
+            fixed: true
+            nullable: false
+    lifecycleCallbacks: {  }

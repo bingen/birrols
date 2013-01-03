@@ -1,0 +1,23 @@
+Languages:
+    type: entity
+    table: languages
+    fields:
+        autoId:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: auto_id
+            generator:
+                strategy: IDENTITY
+        language:
+            type: string
+            length: 32
+            fixed: true
+            nullable: false
+        locale:
+            type: string
+            length: 10
+            fixed: true
+            nullable: true
+    lifecycleCallbacks: {  }

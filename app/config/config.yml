@@ -1,0 +1,141 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: '@BirrolsUserBundle/Resources/config/services.yml' }
+    - { resource: '@BirrolsOAuthBundle/Resources/config/services.yml' }
+
+framework:
+    #esi:             ~
+    translator:      { fallback: "%fallback_locale%" }
+    # translator:      ~
+    secret:          "%secret%"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: "%kernel.debug%"
+    form:            true
+    csrf_protection: true
+    validation:      { enable_annotations: true }
+    templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
+    trust_proxy_headers: false # Whether or not the Request object should trust proxy headers (X_FORWARDED_FOR/HTTP_CLIENT_IP)
+    default_locale:  "%locale%"
+    session:         ~
+#    session:         
+#        default_locale: %locale%
+
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+
+# Assetic Configuration
+assetic:
+    debug:          "%kernel.debug%"
+    use_controller: false
+    bundles:        [ ]
+    #java: /usr/bin/java
+    filters:
+        cssrewrite: ~
+        #closure:
+        #    jar: "%kernel.root_dir%/Resources/java/compiler.jar"
+        #yui_css:
+        #    jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   "%database_driver%"
+        host:     "%database_host%"
+        port:     "%database_port%"
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
+        charset:  UTF8
+        # # http://symfony.com/doc/2.0/cookbook/doctrine/dbal.html
+        # connections:
+        #     default:
+        #         # Other connections parameters
+        #         mapping_types:
+        #             enum: string        
+
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        auto_mapping: true
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    spool:     { type: memory }
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Birrols\UserBundle\Entity\Users
+    # https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/user_manager.md
+    use_listener: false
+    profile:
+        form:
+            type: birrols_user_profile
+    registration:
+        form:
+            type: birrols_user_registration
+        confirmation: 
+            enabled: false
+            template: FOSUserBundle:Registration:email.txt.twig
+            
+parameters:
+    # to override this service
+#    hwi_oauth.user.provider.fosub_bridge.class: Birrols\OAuthBundle\Security\Core\User\FOSUBUserProvider
+    hwi_oauth.registration.form.handler.fosub_bridge.class: Birrols\OAuthBundle\Form\FOSUBRegistrationFormHandler
+hwi_oauth:
+    # name of the firewall in which this bundle is active, this setting MUST be set
+    firewall_name: main
+    fosub:
+        username_iterations: 5
+        properties:
+            google: googleId
+    connect: ~
+    resource_owners:
+        google:
+            type:                google
+            client_id:           "%google_client_id%"
+            client_secret:       "%google_client_secret%"
+            scope:               "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"    
+            user_response_class: 'Birrols\OAuthBundle\OAuth\Response\GoogleUserResponse'
+            paths:
+                email: email
+                profilepicture: picture
+                firstname: given_name
+                lastname: family_name
+                gender: gender
+                locale: locale
+                url: link
+                identifier: id
+        facebook:
+            type:                facebook
+            client_id:           <client_id>
+            client_secret:       <client_secret>
+            scope:               ""            
+        foursquare:
+            type:                foursquare
+            client_id:           <client_id>
+            client_secret:       <client_secret>    
+        twitter:
+            type:                twitter
+            client_id:           <client_id>
+            client_secret:       <client_secret>
+    
+liip_imagine:
+    cache_prefix:         /cache
+    cache_mkdir_mode:     0777
+    filter_sets:
+        thumbnail:
+            quality: 75
+            filters:
+                thumbnail: { size: [80, 80], mode: inset }
+        large:
+            quality: 75
+            filters:
+                thumbnail: { size: [200, 200], mode: inset }

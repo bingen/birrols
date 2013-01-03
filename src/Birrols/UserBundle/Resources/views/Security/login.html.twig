@@ -1,0 +1,40 @@
+{% trans_default_domain "FOSUserBundle" %}
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+{% if error %}
+    <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
+{% endif %}
+
+<form action="{{ path("fos_user_security_check") }}" method="post">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+    <div>
+    <label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
+    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+    </div>
+    
+    <div>
+    <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+    <input type="password" id="password" name="_password" required="required" />
+    </div>
+
+    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+    <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+
+    {# <input type="hidden" name="_target_path" value="{{ target|default('index') }}" />#}
+
+    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
+</form>
+
+<div><a href="{{ path('fos_user_registration_register') }}" title="{{'layout.register'|trans }}">{{'layout.register'|trans }}</a></div>
+<div><a href="{{ path('fos_user_resetting_request') }}" title="{{'resetting.request.submit'|trans }}">{{'resetting.request.submit'|trans }}</a>
+</div>
+<div><a href="{{ path('contact') }}" title="{{'help.contact'|trans({}, 'BirrolsUserBundle') }}">{{'help.contact'|trans({}, 'BirrolsUserBundle') }}</a></div>
+{% block hwi_oauth_content %}
+    {% for owner in hwi_oauth_resource_owners() %}
+    <a href="{{ hwi_oauth_login_url(owner) }}">{{ owner | trans({}, 'HWIOAuthBundle') }}</a> <br />
+    {% endfor %}
+{% endblock hwi_oauth_content %}
+{% endblock fos_user_content %}
+

@@ -1,0 +1,17 @@
+Birrols\UserBundle\Entity\Users:
+    properties:
+        url:
+            - Url:
+                groups: [Registration, Profile]
+        language:
+            - Language: 
+                groups: [Registration, Profile]
+        country:
+            - Country: 
+                groups: [Registration, Profile]
+        birthday:
+            - Date:   
+                groups: [Registration, Profile]
+        image:
+            - Image: 
+                maxSize: 600k
