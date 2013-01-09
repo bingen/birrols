@@ -25,7 +25,10 @@ class AppKernel extends Kernel
 	    new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
             new Birrols\OAuthBundle\BirrolsOAuthBundle(),
             new Liip\ImagineBundle\LiipImagineBundle(),
-        );
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new BCC\ExtraToolsBundle\BCCExtraToolsBundle(),
+            );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();

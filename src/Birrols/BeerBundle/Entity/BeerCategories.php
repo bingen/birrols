@@ -84,10 +84,10 @@ class BeerCategories
     /**
      * Add types
      *
-     * @param Birrols\BeerBundle\Entity\BeersTypes $types
+     * @param Birrols\BeerBundle\Entity\BeerTypes $types
      * @return BeerCategories
      */
-    public function addType(\Birrols\BeerBundle\Entity\BeersTypes $types)
+    public function addType(\Birrols\BeerBundle\Entity\BeerTypes $types)
     {
         $this->types[] = $types;
     
@@ -97,9 +97,9 @@ class BeerCategories
     /**
      * Remove types
      *
-     * @param Birrols\BeerBundle\Entity\BeersTypes $types
+     * @param Birrols\BeerBundle\Entity\BeerTypes $types
      */
-    public function removeType(\Birrols\BeerBundle\Entity\BeersTypes $types)
+    public function removeType(\Birrols\BeerBundle\Entity\BeerTypes $types)
     {
         $this->types->removeElement($types);
     }

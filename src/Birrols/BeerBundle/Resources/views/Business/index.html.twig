@@ -1,0 +1,95 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+<h3>Business list</h3>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Brewery</th>
+            <th>Pub</th>
+            <th>Store</th>
+            <th>Homebrewstore</th>
+            <th>Food</th>
+            <th>Wifi</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Tapsnumber</th>
+            <th>Score</th>
+            <th>Address1</th>
+            <th>Address2</th>
+            <th>Zipcode</th>
+            <th>Country</th>
+            <th>State</th>
+            <th>City</th>
+            <th>Url</th>
+            <th>Facebookurl</th>
+            <th>Twitterurl</th>
+            <th>Gplusurl</th>
+            <th>Foursquareurl</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Lat</th>
+            <th>Lon</th>
+            <th>Imagepath</th>
+            <th>Imageupdate</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('business_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.brewery }}</td>
+            <td>{{ entity.pub }}</td>
+            <td>{{ entity.store }}</td>
+            <td>{{ entity.homebrewStore }}</td>
+            <td>{{ entity.food }}</td>
+            <td>{{ entity.wifi }}</td>
+            <td>{{ entity.name }}</td>
+            <td>{{ entity.description }}</td>
+            <td>{{ entity.tapsNumber }}</td>
+            <td>{{ entity.score }}</td>
+            <td>{{ entity.address1 }}</td>
+            <td>{{ entity.address2 }}</td>
+            <td>{{ entity.zipCode }}</td>
+            <td>{{ entity.country }}</td>
+            <td>{{ entity.state }}</td>
+            <td>{{ entity.city }}</td>
+            <td>{{ entity.url }}</td>
+            <td>{{ entity.facebookUrl }}</td>
+            <td>{{ entity.twitterUrl }}</td>
+            <td>{{ entity.gplusUrl }}</td>
+            <td>{{ entity.foursquareUrl }}</td>
+            <td>{{ entity.email }}</td>
+            <td>{{ entity.phone }}</td>
+            <td>{{ entity.lat }}</td>
+            <td>{{ entity.lon }}</td>
+            <td>{{ entity.imagePath }}</td>
+            <td>{{ entity.imageUpdate }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('business_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('business_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('business_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>
+
+{% endblock %}

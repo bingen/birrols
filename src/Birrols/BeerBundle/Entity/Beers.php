@@ -10,6 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  *
  * @ORM\Table(name="beers")
  * @ORM\Entity(repositoryClass="Birrols\BeerBundle\Entity\BeersRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Beers
 {
@@ -125,6 +126,20 @@ class Beers
     private $register;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    public $imagePath;
+    // file field
+    public $image;
+    // a property used temporarily while updating, to trigger Pre/Post Update
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $imageUpdate;
+    // a property used temporarily while deleting
+    private $imagenameForRemove;
+
+    /**
      * @ORM\OneToMany(targetEntity="Taps", mappedBy="beer")
      */
     protected $taps;
@@ -132,8 +147,87 @@ class Beers
     public function __construct()
     {
         $this->taps = new ArrayCollection();
+        $this->imageUpdate = 0;
     }
     
+    public function getAbsolutePath()
+    {
+        return null === $this->imagePath
+            ? null
+            : $this->getUploadRootDir().'/'.$this->id.'.'.$this->imagePath;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->imagePath
+            ? null
+            : $this->getUploadDir().'/'.$this->id.'.'.$this->imagePath;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // the absolute directory path where uploaded
+        // documents should be saved
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // get rid of the __DIR__ so it doesn't screw up
+        // when displaying uploaded doc/image in the view.
+        return 'uploads/avatars/beers';
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+        if (null !== $this->image) {
+            $this->imagePath = $this->image->guessExtension();
+        }
+    }
+    
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload()
+    {
+        if (null === $this->image) {
+            return;
+        }
+
+        // if there is an error when moving the file, an exception will
+        // be automatically thrown by move(). This will properly prevent
+        // the entity from being persisted to the database on error
+        $this->image->move(
+            $this->getUploadRootDir(),
+            $this->id.'.'.$this->image->guessExtension()
+        );
+
+        unset($this->image);
+    }
+
+    /**
+     * @ORM\PreRemove()
+     */
+    public function storeImagenameForRemove()
+    {
+        $this->imagenameForRemove = $this->getAbsolutePath();
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        if ($this->imagenameForRemove) {
+            unlink($this->imagenameForRemove);
+        }
+    }
+
 
     /**
      * Get id
@@ -498,5 +592,51 @@ class Beers
     public function getTaps()
     {
         return $this->taps;
+    }
+
+    /**
+     * Set imagePath
+     *
+     * @param string $imagePath
+     * @return Beers
+     */
+    public function setImagePath($imagePath)
+    {
+        $this->imagePath = $imagePath;
+    
+        return $this;
+    }
+
+    /**
+     * Get imagePath
+     *
+     * @return string 
+     */
+    public function getImagePath()
+    {
+        return $this->imagePath;
+    }
+
+    /**
+     * Set imageUpdate
+     *
+     * @param integer $imageUpdate
+     * @return Beers
+     */
+    public function setImageUpdate($imageUpdate)
+    {
+        $this->imageUpdate = $imageUpdate;
+    
+        return $this;
+    }
+
+    /**
+     * Get imageUpdate
+     *
+     * @return integer 
+     */
+    public function getImageUpdate()
+    {
+        return $this->imageUpdate;
     }
 }

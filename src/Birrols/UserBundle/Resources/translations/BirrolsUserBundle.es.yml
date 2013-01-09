@@ -1,0 +1,14 @@
+# Profile
+profile:
+    show:
+        name: Nombre
+        lastname: Apellidos
+        birthday: Fecha de nacimiento
+        sex:
+          label: Sexo
+          male: Hombre
+          female: Mujer
+        country: País
+        language: Idioma
+        url: Url
+        image: Avatar

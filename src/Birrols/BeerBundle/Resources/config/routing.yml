@@ -1,3 +1,15 @@
-birrols_beer_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: BirrolsBeerBundle:Default:index }
+BirrolsBeerBundle_business:
+    resource: "@BirrolsBeerBundle/Resources/config/routing/business.yml"
+    prefix:   /business
+
+BirrolsBeerBundle_beers:
+    resource: "@BirrolsBeerBundle/Resources/config/routing/beers.yml"
+    prefix:   /beers
+    
+BirrolsBeerBundle_beercategories:
+    resource: "@BirrolsBeerBundle/Resources/config/routing/beercategories.yml"
+    prefix:   /beercategories
+
+BirrolsBeerBundle_beertypes:
+    resource: "@BirrolsBeerBundle/Resources/config/routing/beertypes.yml"
+    prefix:   /beertypes

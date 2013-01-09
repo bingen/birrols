@@ -107,11 +107,6 @@ class Users extends BaseUser
      */
     protected $taps;
 
-   /**
-     * @ORM\OneToMany(targetEntity="Birrols\BeerBundle\Entity\Logs", mappedBy="user")
-     */
-    protected $logs;
-
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
@@ -133,7 +128,6 @@ class Users extends BaseUser
         $this->businesses = new ArrayCollection();
         $this->businessesAdmin = new ArrayCollection();
         $this->taps = new ArrayCollection();
-        $this->logs = new ArrayCollection();
         $this->imageUpdate = 0;
     }
 
@@ -613,39 +607,6 @@ class Users extends BaseUser
     public function getTaps()
     {
         return $this->taps;
-    }
-
-    /**
-     * Add logs
-     *
-     * @param Birrols\BeerBundle\Entity\Logs $logs
-     * @return Users
-     */
-    public function addLog(\Birrols\BeerBundle\Entity\Logs $logs)
-    {
-        $this->logs[] = $logs;
-    
-        return $this;
-    }
-
-    /**
-     * Remove logs
-     *
-     * @param Birrols\BeerBundle\Entity\Logs $logs
-     */
-    public function removeLog(\Birrols\BeerBundle\Entity\Logs $logs)
-    {
-        $this->logs->removeElement($logs);
-    }
-
-    /**
-     * Get logs
-     *
-     * @return Doctrine\Common\Collections\Collection 
-     */
-    public function getLogs()
-    {
-        return $this->logs;
     }
 
     /**

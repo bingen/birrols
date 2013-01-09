@@ -139,3 +139,16 @@ liip_imagine:
             quality: 75
             filters:
                 thumbnail: { size: [200, 200], mode: inset }
+
+knp_menu:
+    twig:  
+        template: BirrolsBeerBundle:Default:knp_menu.html.twig
+#    templating: false # if true, enables the helper for PHP templates
+#    default_renderer: twig # The renderer to use, list is also available by default
+
+#BCC configuration
+services:
+    bcc.twig.extension:
+        class: BCC\ExtraToolsBundle\Twig\TwigExtension
+        tags:
+            -  { name: twig.extension }

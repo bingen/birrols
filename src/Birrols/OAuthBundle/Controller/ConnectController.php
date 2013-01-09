@@ -111,7 +111,8 @@ class ConnectController extends BaseController
         $fields['_token'] = '2bdfb709a7b2b569d8b79dc189bda59dbd0b427d';
         $request->request->add( array('fos_user_registration_form' => $fields ) );
         if( $fields['language'] ) {
-//            $request->setDefaultLocale( $fields['language'] );
+            // TODO: links in the header wirh undefined locale
+            $request->setDefaultLocale( $fields['language'] );
             $request->setLocale( $fields['language'] );
         }
         

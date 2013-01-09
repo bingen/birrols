@@ -1,0 +1,30 @@
+beercategories:
+    pattern:  /
+    defaults: { _controller: "BirrolsBeerBundle:BeerCategories:index" }
+
+beercategories_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "BirrolsBeerBundle:BeerCategories:show" }
+
+beercategories_new:
+    pattern:  /new
+    defaults: { _controller: "BirrolsBeerBundle:BeerCategories:new" }
+
+beercategories_create:
+    pattern:  /create
+    defaults: { _controller: "BirrolsBeerBundle:BeerCategories:create" }
+    requirements: { _method: post }
+
+beercategories_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "BirrolsBeerBundle:BeerCategories:edit" }
+
+beercategories_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "BirrolsBeerBundle:BeerCategories:update" }
+    requirements: { _method: post }
+
+beercategories_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "BirrolsBeerBundle:BeerCategories:delete" }
+    requirements: { _method: post }

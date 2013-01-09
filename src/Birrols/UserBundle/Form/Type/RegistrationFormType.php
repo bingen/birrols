@@ -23,9 +23,9 @@ class RegistrationFormType extends BaseType
                 'translation_domain' => 'BirrolsUserBundle',
                 ));
         $builder->add('sex', 'choice', array( 
-                'choices'   => array(1 => 'Male', 2 => 'Female'),
+                'choices'   => array(1 => 'profile.show.sex.male', 2 => 'profile.show.sex.female'),
                 'required' => false,
-                'label'     => 'profile.show.sex',
+                'label'     => 'profile.show.sex.label',
                 'translation_domain' => 'BirrolsUserBundle'
                 ));
         $builder->add('birthday', 'birthday', array(
@@ -37,11 +37,13 @@ class RegistrationFormType extends BaseType
                 'required' => false,
                 'label'     => 'profile.show.country',
                 'translation_domain' => 'BirrolsUserBundle',
+                'preferred_choices' => array('US', 'ES', 'UK')
                 ));
         $builder->add('language', 'language', array(
                 'required' => false,
                 'label'     => 'profile.show.language',
                 'translation_domain' => 'BirrolsUserBundle',
+//TODO:                'choices' => array('ca', 'en', 'es'),
                 ));
         $builder->add('url', 'url', array(
                 'required' => false,

@@ -1,0 +1,30 @@
+beertypes:
+    pattern:  /
+    defaults: { _controller: "BirrolsBeerBundle:BeerTypes:index" }
+
+beertypes_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "BirrolsBeerBundle:BeerTypes:show" }
+
+beertypes_new:
+    pattern:  /new
+    defaults: { _controller: "BirrolsBeerBundle:BeerTypes:new" }
+
+beertypes_create:
+    pattern:  /create
+    defaults: { _controller: "BirrolsBeerBundle:BeerTypes:create" }
+    requirements: { _method: post }
+
+beertypes_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "BirrolsBeerBundle:BeerTypes:edit" }
+
+beertypes_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "BirrolsBeerBundle:BeerTypes:update" }
+    requirements: { _method: post }
+
+beertypes_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "BirrolsBeerBundle:BeerTypes:delete" }
+    requirements: { _method: post }

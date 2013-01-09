@@ -238,7 +238,7 @@ h2 {
 	padding: 0 20px;
 	float: left;
 }
-#menu_ul li a {
+#menu ul li a {
 	display:block;
 	text-decoration:none;
 	color: #989898;
@@ -263,25 +263,25 @@ h2 {
 	background-image: url(../img/menu_1_relleno.png);
 }*/
 
-#menu_ul {padding:0; margin:0; list-style: none;}
-#menu_ul li {float:left; position:relative;}
-/*#menu_ul li ul {display: none;}*/
+#menu ul {padding:0; margin:0; list-style: none;}
+#menu ul li {float:left; position:relative;}
+/*#menu ul li ul {display: none;}*/
 
 /* button hover properties */
-#menu_ul li:hover a {color:#32023F; background: url(../img/menu_1.png);}
-/*#menu_ul li:hover ul {display:block; position:absolute; top:42px; left:0; width:152px; margin: 0; padding: 0;}
-#menu_ul li:hover ul li a.two {background:#FFF; color:#32023F;}
-#menu_ul li:hover ul li:hover a.two {background:#FFF; color:#32023F;}
-#menu_ul li:hover ul li ul {display: none;}*/
+#menu ul li:hover a {color:#32023F; background: url(../img/menu_1.png);}
+/*#menu ul li:hover ul {display:block; position:absolute; top:42px; left:0; width:152px; margin: 0; padding: 0;}
+#menu ul li:hover ul li a.two {background:#FFF; color:#32023F;}
+#menu ul li:hover ul li:hover a.two {background:#FFF; color:#32023F;}
+#menu ul li:hover ul li ul {display: none;}*/
 
-#menu_ul li:hover .one {color:#32023F; background: url(../img/menu_1.png);}
-#menu_ul li:hover .three {color:#32023F; background: url(../img/menu_1.png);}
+#menu ul li:hover .one {color:#32023F; background: url(../img/menu_1.png);}
+#menu ul li:hover .three {color:#32023F; background: url(../img/menu_1.png);}
 
 #menu a.Selected {color:#32023F; background: url(../img/menu_1.png);}
 /*#menu a.oneSelected {color:#043454; background: url(../img/nav/1b.png);}
 #menu a.threeSelected {color:#043454; background: url(../img/nav/3b.png);}*/
 
-h3, h3 a:link, h3 a:hover, h3 a:visited, h3 a:active  {
+h4, h4 a:link, h4 a:hover, h4 a:visited, h4 a:active  {
   font-size: 15pt;
   color: #FF023F;
   margin: 0;

@@ -4,7 +4,10 @@ profile:
         name: Name
         lastname: Last Name
         birthday: Birthday
-        sex: Gender
+        sex:
+          label: Sex
+          male: Male
+          female: Female
         country: Country
         language: Language
         url: Url

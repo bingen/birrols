@@ -51,7 +51,7 @@ class FOSUBUserProvider extends BaseProvider
      */
     public function loadUserByOAuthUserResponse(UserResponseInterface $response)
     {
-        var_dump($this->properties);
+//        var_dump($this->properties);
         
         $username = $response->getUsername();
         $user = $this->userManager->findUserBy(array($this->getProperty($response) => $username));
@@ -62,7 +62,7 @@ class FOSUBUserProvider extends BaseProvider
 //            }
 
             // create new user here
-            $user = $this->userManager->createUser();
+//            $user = $this->userManager->createUser();
 
 //            $formHandler = $this->container->get('hwi_oauth.registration.form.handler');
 //            $username = $formHandler->getUniqueUsernameExtended($response, $user);

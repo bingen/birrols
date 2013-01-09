@@ -41,20 +41,8 @@
         </div>
 
                     </div> <!-- login -->
-
                     <div id="menu">
-                        <ul id="menu_ul" class="superfish">
-                            <li>
-                                <a href="{{ path('beers') }}" title="Cervezas">
-                                    Cervezas
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ path('businesses') }}" title="Empresas">
-                                    Empresas
-                                </a>
-                            </li>
-                        </ul>
+                        {{ knp_menu_render('BirrolsBeerBundle:Builder:mainMenu') }}
                     </div> <!-- menu -->
                     </div> <!-- aux_2 -->
                     <div id="fake-aux_1" style="clear: both;"></div>
@@ -98,25 +86,6 @@
                         </li>
                     </ul>
                 </div> <!-- social-env -->
-                <div id="ayuda" class="login">
-                    <ul>
-                        <li class="noborder">
-                            <a href="{{ path('about') }}" title="Acerca de Birrols - Qué es Birrols y FAQ">
-                                Acerca de Birrols
-                            </a>
-                            </li>
-                        <li>
-                            <a href="{{ path('legal') }}" title="Términos y condiciones">
-                                Legal
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ path('contact') }}" title="Contacta con el equipo de Birrols">
-                                Contacto
-                            </a>
-                        </li>
-                    </ul>
-                </div> <!-- ayuda -->
                 <div id="fake-cabecera" style="clear: both;"></div>
             </div> <!-- cabecera_in -->
         {% endblock %}

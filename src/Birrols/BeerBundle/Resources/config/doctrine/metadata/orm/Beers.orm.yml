@@ -1,6 +1,7 @@
 Beers:
     type: entity
     table: beers
+    repositoryClass: Birrols\BeerBundle\Entity\BeersRepository
     fields:
         autoId:
             id: true

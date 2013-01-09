@@ -1,0 +1,39 @@
+{% trans_default_domain "BirrolsBeerBundle" %}
+
+{% if entity[0].imagePath %}
+    <img src="{{ asset('uploads/avatars/beers/' ~ entity[0].id ~ '.' ~ entity[0].imagePath) }}" alt="{{ entity[0].name }}"/>
+{% else %}
+    <img src="{{ asset('images/avatar.png') }}" alt="{{ entity[0].name }}"/>
+{% endif %}
+<div class='column col-container'>
+    <h4 class="column col-name">
+        <a href="{{ path('beers_show', { 'id': entity[0].id }) }}" title="{{ entity[0].name }}">{{ entity[0].name }}</a>
+    </h4>
+    <div class="column col-country">{{ entity.country | country }}</div>
+    <div class="column col-brewery">
+        <a href="{{ path('business_show', { 'id': entity.brewery_id }) }}" title="{{ entity.brewery }}">{{ entity.brewery }}</a>
+    </div>
+    <div class="column col-category">{{ entity.category }}</div>
+    <div class="column col-type">{{ entity.type }}</div>
+    <div class="column col-abv">
+        {{ 'beer.abv'|trans }}: {% if entity[0].abv %} {{entity[0].abv}} {% else %} {{ 'beer.na'|trans }} {% endif %}
+    </div>
+    <div class="column col-ibu">
+        {{ 'beer.ibu'|trans }}: {% if entity[0].ibu %} {{entity[0].ibu}} {% else %} {{ 'beer.na'|trans }} {% endif %}
+    </div>
+    <div class="column col-desc">{{ entity[0].description }}</div>
+    <div class="column col-score"><img src="{{ asset('images/score_'~ entity[0].score ~ '.png') }}" alt="{{ entity[0].score }}"/></div>
+</div>
+<div class="column col-actions">
+    <ul class="actions">
+        <li>
+            <img src="fav" alt="TODO"/>
+        </li>
+        <li>
+            <a href="{{ path('beers_show', { 'id': entity[0].id }) }}">{{ 'actions.show'|trans }}</a>
+        </li>
+        <li>
+            <a href="{{ path('beers_edit', { 'id': entity[0].id }) }}">{{ 'actions.edit'|trans }}</a>
+        </li>
+    </ul>
+</div>

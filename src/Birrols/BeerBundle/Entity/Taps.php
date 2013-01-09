@@ -45,13 +45,6 @@ class Taps
     private $beer;
 
     /**
-     * @var boolean $actual
-     *
-     * @ORM\Column(name="actual", type="boolean", nullable=true)
-     */
-    private $actual;
-
-    /**
      * @var integer $register
      *
      * @ORM\ManyToOne(targetEntity="Birrols\UserBundle\Entity\Users", inversedBy="taps")

@@ -56,7 +56,10 @@ class GoogleUserResponse extends AdvancedPathUserResponse
      */
     public function getGender()
     {
-        return $this->getValueForPath('gender', false);
+        return strtr( $this->getValueForPath('gender', false), array(
+            'male' => 1,
+            'female' =>2
+        ) );
     }
 
     /**

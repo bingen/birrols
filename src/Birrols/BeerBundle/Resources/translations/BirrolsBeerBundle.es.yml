@@ -1,0 +1,19 @@
+menu:
+  home: Inicio
+  beers: Cervezas
+  breweries: Breweries
+  help: Ayuda
+  about: Acerca de
+  contact: Contacto
+  legal: Legal
+beer:
+  abv: ABV
+  ibu: IBU
+  na: N/A
+actions:
+  show: Mostrar
+  edit: Editar
+  create: Crear
+  
+  
+

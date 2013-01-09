@@ -10,6 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  *
  * @ORM\Table(name="business")
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class Business
 {
@@ -114,10 +115,9 @@ class Business
     private $zipCode;
 
     /**
-     * @var integer $country
+     * @var string $country
      *
-     * @ORM\ManyToOne(targetEntity="Countries", inversedBy="businesses")
-     * @ORM\JoinColumn(name="country_id", referencedColumnName="id")
+     * @ORM\Column(name="country", type="string", length=50, nullable=true)
      */
     private $country;
 
@@ -215,6 +215,19 @@ class Business
     private $register;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    public $imagePath;
+    public $image;
+    // a property used temporarily while updating, to trigger Pre/Post Update
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $imageUpdate;
+    // a property used temporarily while deleting
+    private $imagenameForRemove;
+
+    /**
      * @ORM\OneToMany(targetEntity="Beers", mappedBy="brewery")
      */
     protected $beers;
@@ -228,8 +241,86 @@ class Business
     {
         $this->beers = new ArrayCollection();
         $this->taps = new ArrayCollection();
+        $this->imageUpdate = 0;
     }
     
+    public function getAbsolutePath()
+    {
+        return null === $this->imagePath
+            ? null
+            : $this->getUploadRootDir().'/'.$this->id.'.'.$this->imagePath;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->imagePath
+            ? null
+            : $this->getUploadDir().'/'.$this->id.'.'.$this->imagePath;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // the absolute directory path where uploaded
+        // documents should be saved
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // get rid of the __DIR__ so it doesn't screw up
+        // when displaying uploaded doc/image in the view.
+        return 'uploads/avatars/business';
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+        if (null !== $this->image) {
+            $this->imagePath = $this->image->guessExtension();
+        }
+    }
+    
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload()
+    {
+        if (null === $this->image) {
+            return;
+        }
+
+        // if there is an error when moving the file, an exception will
+        // be automatically thrown by move(). This will properly prevent
+        // the entity from being persisted to the database on error
+        $this->image->move(
+            $this->getUploadRootDir(),
+            $this->id.'.'.$this->image->guessExtension()
+        );
+
+        unset($this->image);
+    }
+
+    /**
+     * @ORM\PreRemove()
+     */
+    public function storeImagenameForRemove()
+    {
+        $this->imagenameForRemove = $this->getAbsolutePath();
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        if ($this->imagenameForRemove) {
+            unlink($this->imagenameForRemove);
+        }
+    }
 
 
     /**
@@ -797,10 +888,10 @@ class Business
     /**
      * Set country
      *
-     * @param Birrols\BeerBundle\Entity\Countries $country
+     * @param $country
      * @return Business
      */
-    public function setCountry(\Birrols\BeerBundle\Entity\Countries $country = null)
+    public function setCountry($country)
     {
         $this->country = $country;
     
@@ -927,5 +1018,51 @@ class Business
     public function getTaps()
     {
         return $this->taps;
+    }
+
+    /**
+     * Set imagePath
+     *
+     * @param string $imagePath
+     * @return Business
+     */
+    public function setImagePath($imagePath)
+    {
+        $this->imagePath = $imagePath;
+    
+        return $this;
+    }
+
+    /**
+     * Get imagePath
+     *
+     * @return string 
+     */
+    public function getImagePath()
+    {
+        return $this->imagePath;
+    }
+
+    /**
+     * Set imageUpdate
+     *
+     * @param integer $imageUpdate
+     * @return Business
+     */
+    public function setImageUpdate($imageUpdate)
+    {
+        $this->imageUpdate = $imageUpdate;
+    
+        return $this;
+    }
+
+    /**
+     * Get imageUpdate
+     *
+     * @return integer 
+     */
+    public function getImageUpdate()
+    {
+        return $this->imageUpdate;
     }
 }
