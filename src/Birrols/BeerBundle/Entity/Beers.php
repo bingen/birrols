@@ -57,7 +57,7 @@ class Beers
     /**
      * @var float $abv
      *
-     * @ORM\Column(name="abv", type="decimal", nullable=true)
+     * @ORM\Column(name="abv", type="decimal", precision=5, scale=2, nullable=true)
      */
     private $abv;
 
@@ -113,7 +113,7 @@ class Beers
     /**
      * @var float $score
      *
-     * @ORM\Column(name="score", type="decimal", nullable=true)
+     * @ORM\Column(name="score", type="decimal", precision=3, scale=2, nullable=true)
      */
     private $score;
 

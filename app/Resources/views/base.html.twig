@@ -4,9 +4,9 @@
         <meta charset="UTF-8" />
         <title>{% block title %}Birrols{% endblock %}</title>
         {% block stylesheets %}
-        <link href="{{ asset('css/birrols.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('bundles/birrolsbeer/css/birrols.css') }}" rel="stylesheet" type="text/css" />
         {% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('img/favicon.ico') }}" />
     </head>
     <body>
         <header>
@@ -15,7 +15,7 @@
                 <div id="aux_1">
                     <div id="titulo">
                         <h1><a href="{{ path('index') }}" title="">
-                                <img src="{{ asset('img/logo_ocb_01_60.png') }}" alt="Birrols"/>
+                                <img src="{{ asset('bundles/birrolsbeer/img/logo_ocb_01_60.png') }}" alt="Birrols"/>
                             </a>
                         </h1>
                         <h2> <span id='subtitle_1'>{{ title_1|default('CERVEZA') }} </span>
@@ -51,37 +51,37 @@
                     <ul>
                         <li>
                             <a href="http://www.facebook.com/share.php?u=http%3A%2F%2Fwww.birrols.com&amp;t=Birrols,+el+portal+para+amantes+de+la+cerveza+artesana" title="Facebook" onClick="window.open(this.href); return false;">
-                                <img src="{{ asset('img/facebook_16x16.png') }}" title="Facebook" alt="Facebook" class="social" />
+                                <img src="{{ asset('bundles/birrolsbeer/img/facebook_16x16.png') }}" title="Facebook" alt="Facebook" class="social" />
                             </a>
                         </li>
                         <li>
                             <a rel="nofollow"  href="http://identi.ca/notice/new?status_textarea=http%3A%2F%2Fwww.birrols.com" title="Identi.ca" onClick="window.open(this.href); return false;">
-                                <img src="{{ asset('img/identi.ca.png') }}" title="Identi.ca" alt="Identi.ca"  class="social" />
+                                <img src="{{ asset('bundles/birrolsbeer/img/identi.ca.png') }}" title="Identi.ca" alt="Identi.ca"  class="social" />
                             </a>
                         </li>
                         <li>
                             <a rel="nofollow"  href="http://twitter.com/home?status=Birrols%20-%20http%3A%2F%2Fwww.birrols.com%2F" title="Twitter" onClick="window.open(this.href); return false;">
-                                <img src="{{ asset('img/twitter-icon.png') }}" title="Twitter" alt="Twitter" class="social" />
+                                <img src="{{ asset('bundles/birrolsbeer/img/twitter-icon.png') }}" title="Twitter" alt="Twitter" class="social" />
                             </a>
                         </li>
                         <li>
                             <a rel="nofollow"  href="http://www.tuenti.com/share?url=http%3A%2F%2Fwww.birrols.com" title="Twitter" onClick="window.open(this.href); return false;">
-                                <img src="{{ asset('img/tuenti.png') }}" title="Tuenti" alt="Tuenti" class="social" />
+                                <img src="{{ asset('bundles/birrolsbeer/img/tuenti.png') }}" title="Tuenti" alt="Tuenti" class="social" />
                             </a>
                         </li>
                         <li>
                             <a rel="nofollow"  href="http://www.google.com/buzz/post?url=http%3A%2F%2Fwww.birrols.com&amp;imageurl=http%3A%2F%2Fwww.birrols.com%2F//img/logo_ocb_01_60.png" title="Buzz" onClick="window.open(this.href); return false;">
-                                <img src="{{ asset('img/buzz.png') }}" title="Buzz" alt="Buzz" class="social" />
+                                <img src="{{ asset('bundles/birrolsbeer/img/buzz.png') }}" title="Buzz" alt="Buzz" class="social" />
                             </a>
                         </li>
                         <li>
                             <a rel="nofollow"  href="http://www.google.com/bookmarks/mark?op=edit&amp;bkmk=http%3A%2F%2Fwww.birrols.com&amp;annotation=Birrols" title="Google Bookmarks" onClick="window.open(this.href); return false;">
-                                <img src="{{ asset('img/google_bookmarks.png') }}" title="Google Bookmarks" alt="Google Bookmarks" class="social" />
+                                <img src="{{ asset('bundles/birrolsbeer/img/google_bookmarks.png') }}" title="Google Bookmarks" alt="Google Bookmarks" class="social" />
                             </a>
                         </li>
                         <li>
                             <a rel="nofollow"  href="mailto:?subject=Birrols,+el+portal+para+amantes+de+la+cerveza+artesana&amp;body=http%3A%2F%2Fwww.birrols.com" title="email" onClick="window.open(this.href); return false;">
-                                <img src="{{ asset('img/common/email.png') }}" title="email" alt="email" class="social" />
+                                <img src="{{ asset('bundles/birrolsbeer/img/common/email.png') }}" title="email" alt="email" class="social" />
                             </a>
                         </li>
                     </ul>

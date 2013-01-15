@@ -3,7 +3,7 @@
 {% if entity[0].imagePath %}
     <img src="{{ asset('uploads/avatars/beers/' ~ entity[0].id ~ '.' ~ entity[0].imagePath) }}" alt="{{ entity[0].name }}"/>
 {% else %}
-    <img src="{{ asset('images/avatar.png') }}" alt="{{ entity[0].name }}"/>
+    <img src="{{ asset('bundles/birrolsbeer/img/no_gravatar_80.png') }}" alt="{{ entity[0].name }}"/>
 {% endif %}
 <div class='column col-container'>
     <h4 class="column col-name">
@@ -22,7 +22,7 @@
         {{ 'beer.ibu'|trans }}: {% if entity[0].ibu %} {{entity[0].ibu}} {% else %} {{ 'beer.na'|trans }} {% endif %}
     </div>
     <div class="column col-desc">{{ entity[0].description }}</div>
-    <div class="column col-score"><img src="{{ asset('images/score_'~ entity[0].score ~ '.png') }}" alt="{{ entity[0].score }}"/></div>
+    <div class="column col-score"><img src="{{ asset('bundles/birrolsbeer/img/score_'~ entity[0].score ~ '.png') }}" alt="{{ entity[0].score }}"/></div>
 </div>
 <div class="column col-actions">
     <ul class="actions">

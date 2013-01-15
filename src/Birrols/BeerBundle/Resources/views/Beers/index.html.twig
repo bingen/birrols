@@ -5,36 +5,55 @@
 
 <h3>Beers list</h3>
 
-<form action="{{ path('beers') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_errors(form) }}
+    <div id='filters'>
+    <form action="{{ path('beers') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_errors(form) }}
+        {% block _birrols_beerbundle_beerssearchtype_country_widget %}
+            {{ form_label(form.country) }}
+            {{ form_errors(form.country) }}
+            {{ form_widget(form.country, { 'attr': {'class': 'country turn-to-ac'} }) }}
+        {% endblock %}
+        {{ form_rest(form) }}
+        <input type="hidden" id="abv-min" value=""/>
+        <input type="hidden" id="abv-max" value=""/>
+        <input type="hidden" id="ibu-min" value=""/>
+        <input type="hidden" id="ibu-max" value=""/>
 
-    {{ form_rest(form) }}
-
-    {# <input type="submit" /> #}
-</form>
-
-<div id="results" class="results">
-    <ul class="principal-list" id="beers-list">
-        {% for entity in entities %}
-            <li class="row" {% if loop.index is odd %}class="color"{% endif %}
-                onclick="window.location='{{ path('beers_show', { 'id': entity[0].id }) }}'">
-                {% include 'BirrolsBeerBundle:Beers:beerListItem.html.twig'
-                    with {'entity': entity}
-                %}
-            </li>
-        {% endfor %}
-    </ul>
-    <div class="navigation">
-        {{ entities.render()|raw }}
+        {# <input type="submit" /> #}
+    </form>
     </div>
-</div>' . " {# results #}
 
-<ul>
-    <li>
-        <a href="{{ path('beers_new') }}">
-            {{ 'actions.create'|trans }}}
-        </a>
-    </li>
-</ul>
+    <div id="results" class="results">
+        <ul class="principal-list" id="beers-list">
+            {% for entity in entities %}
+                <li class="row" {% if loop.index is odd %}class="color"{% endif %}
+                    onclick="window.location='{{ path('beers_show', { 'id': entity[0].id }) }}'">
+                    {% include 'BirrolsBeerBundle:Beers:beerListItem.html.twig'
+                        with {'entity': entity}
+                    %}
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="navigation">
+            {{ entities.render()|raw }}
+        </div>
+    </div>' . " {# results #}
 
+    <ul>
+        <li>
+            <a href="{{ path('beers_new') }}">
+                {{ 'actions.create'|trans }}}
+            </a>
+        </li>
+    </ul>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+    <link href="{{ asset('bundles/birrolsbeer/css/beers.css') }}" rel="stylesheet" type="text/css" />
+    {# <script type="text/javascript" src="{{ asset('bundles/birrolsbeer/js/jquery-ui-autocomplete.js') }}"></script> #}
+    <script type="text/javascript" src="{{ asset('bundles/birrolsbeer/js/jquery.select-to-autocomplete.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/birrolsbeer/js/beers.js') }}"></script>
 {% endblock %}

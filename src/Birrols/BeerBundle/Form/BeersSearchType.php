@@ -27,7 +27,12 @@ class BeersSearchType extends AbstractType
 //            'class' => 'BirrolsBeerBundle:Business',
 //            'property' => 'name',
 //            ));
-        $builder->add('country', 'country', array('mapped' => false));
+        $builder->add('country', 'country', array(
+            'mapped' => false,
+            'required' => false,
+            'data' => '',
+            'preferred_choices' => array('US', 'UK', 'ES')
+            ));
         $builder->add('abv');
         $builder->add('ibu');
         //$builder->add('');
